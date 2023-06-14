@@ -1,0 +1,44 @@
+<app-header></app-header>
+
+<div style="padding: 10px; text-align: right;">
+  <button routerLink="/create-employ-project" routerLinkActive="active">
+    Create employ project
+  </button>
+</div>
+
+<div class="filter-section">
+  <label for="clientFilter">Filter by Client:</label>
+  <select id="clientFilter" [(ngModel)]="selectedClient" (change)="applyFilters('client')">
+    <option value="">All Clients</option>
+    <option *ngFor="let client of clients" [value]="client._id">{{ client.clientName }}</option>
+  </select>
+
+  <label for="projectFilter">Filter by Project:</label>
+  <select id="projectFilter" [(ngModel)]="selectedProject" (change)="applyFilters('project')">
+    <option value="">All Projects</option>
+    <option *ngFor="let project of projects" [value]="project._id">{{ project.projectName }}</option>
+  </select>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Project</th>
+      <th>Client</th>
+      <th>Status</th>
+      <th>Update</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of filteredData">
+      <td>{{ item.employees.firstName }}</td>
+      <td>{{ item.employees.lastName }}</td>
+      <td>{{ item.project.projectName }}</td>
+      <td>{{ item.client.clientName }}</td>
+      <td>{{ item.status }}</td>
+      <td><a routerLink="/create-employ-project" routerLinkActive="active">Update</a></td>
+    </tr>
+  </tbody>
+</table>

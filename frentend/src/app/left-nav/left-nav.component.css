@@ -1,0 +1,31 @@
+.left-nav {
+    width: 200px;
+    background-color: #f1f1f1;
+    padding: 10px;
+  }
+  
+  .left-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .left-nav li {
+    margin-bottom: 10px;
+  }
+  
+  .left-nav a {
+    display: block;
+    padding: 8px;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .left-nav a:hover {
+    background-color: #ddd;
+  }
+  
+  .left-nav .active {
+    background-color: #007bff;
+    color: #fff;
+  }

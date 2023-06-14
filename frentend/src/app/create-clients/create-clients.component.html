@@ -1,0 +1,25 @@
+<app-header></app-header>
+<p>create-clients works!</p>
+<div class="signup-form">
+  <form (ngSubmit)="submitForm()" #clientForm="ngForm">
+    <div class="form-group">
+      <label for="clientName">Client Name</label>
+      <input type="text" class="form-control" id="clientName" placeholder="Enter client name" [(ngModel)]="clientName"
+        name="clientName" required #clientNameInput="ngModel">
+
+      <div *ngIf="clientNameInput.invalid && (clientNameInput.dirty || clientNameInput.touched)" class="error-message">
+        <div *ngIf="clientNameInput.errors && clientNameInput.errors['required']">Client Name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="status">Status</label>
+      <input type="text" class="form-control" id="status" placeholder="Enter Status" [(ngModel)]="status"
+        name="status" required #statusInput="ngModel">
+
+      <div *ngIf="statusInput.invalid && (statusInput.dirty || statusInput.touched)" class="error-message">
+        <div *ngIf="statusInput.errors && statusInput.errors['required']">Status is required.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!clientNameInput.valid">Create client</button>
+  </form>
+</div>

@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="signup-form">
+    <h2>Create Employe Project</h2>
+
+    <form (ngSubmit)="submitForm()" #projectForm="ngForm">
+        <div class="form-group">
+            <label for="designation">Employe</label>
+            <select class="form-control" [(ngModel)]="empId" name="empId" required #employInput="ngModel">
+
+                <option disabled>Select Employe</option>
+                <option *ngFor="let item of employes" [value]="item._id">{{item.firstName}} {{item.lastName}}</option>
+            </select>
+
+            <div *ngIf="employInput.invalid && (employInput.dirty || employInput.touched)" class="error-message">
+                <div *ngIf="employInput.errors && employInput.errors['required']">Employe is required.</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="designation">Client</label>
+            <select class="form-control" [(ngModel)]="clientId" name="clientId" required #clientInput="ngModel" (change)="getProjects()">
+
+                <option disabled>Select Client</option>
+                <option *ngFor="let item of clients" [value]="item._id">{{item.clientName}}</option>
+            </select>
+
+            <div *ngIf="clientInput.invalid && (clientInput.dirty || clientInput.touched)" class="error-message">
+                <div *ngIf="clientInput.errors && clientInput.errors['required']">Client is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="designation">Project</label>
+            <select class="form-control" [(ngModel)]="projectId" name="projectId" required #projectInput="ngModel">
+
+                <option disabled>Select Project</option>
+                <option *ngFor="let item of projects" [value]="item._id">{{item.projectName}}</option>
+            </select>
+
+            <div *ngIf="projectInput.invalid && (projectInput.dirty || projectInput.touched)" class="error-message">
+                <div *ngIf="projectInput.errors && projectInput.errors['required']">Project is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="status">Status</label>
+            <input type="text" class="form-control" id="status" placeholder="Enter status" [(ngModel)]="status"
+                name="status" required #statusInput="ngModel">
+
+            <div *ngIf="statusInput.invalid && (statusInput.dirty || statusInput.touched)" class="error-message">
+                <div *ngIf="statusInput.errors && statusInput.errors['required']">Status is required.</div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!projectForm.valid">Create project</button>
+        <div *ngIf="error" class="error-message">
+            <div *ngIf="error">{{error}}</div>
+        </div>
+    </form>
+</div>

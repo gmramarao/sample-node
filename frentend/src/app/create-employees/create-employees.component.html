@@ -1,0 +1,86 @@
+<app-header></app-header>
+
+<div class="signup-form">
+  <h2>Create Employe</h2>
+
+  <form (ngSubmit)="submitForm()" #employeeForm="ngForm">
+    <div class="form-group">
+      <label for="empId">Employee ID</label>
+      <input type="text" class="form-control" id="empId" placeholder="Enter employee ID" [(ngModel)]="empId"
+        name="empId" required #empIdInput="ngModel">
+
+      <div *ngIf="empIdInput.invalid && (empIdInput.dirty || empIdInput.touched)" class="error-message">
+        <div *ngIf="empIdInput.errors && empIdInput.errors['required']">Employee ID is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstName">First name</label>
+      <input type="text" class="form-control" id="firstName" placeholder="Enter first name" [(ngModel)]="firstName"
+        name="firstName" required #firstNameInput="ngModel">
+
+      <div *ngIf="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)" class="error-message">
+        <div *ngIf="firstNameInput.errors && firstNameInput.errors['required']">First name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last name</label>
+      <input type="text" class="form-control" id="lastName" placeholder="Enter last name" [(ngModel)]="lastName"
+        name="lastName" required #lastNameInput="ngModel">
+
+      <div *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)" class="error-message">
+        <div *ngIf="lastNameInput.errors && lastNameInput.errors['required']">Last name is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="pEmail">Personal email address</label>
+      <input type="email" class="form-control" id="pEmail" placeholder="Enter personal email" [(ngModel)]="pEmail"
+        name="pEmail" required #pEmailInput="ngModel">
+
+      <div *ngIf="pEmailInput.invalid && (pEmailInput.dirty || pEmailInput.touched)" class="error-message">
+        <div *ngIf="pEmailInput.errors && pEmailInput.errors['required']">Personal email address is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="orgEmail">Organization email address</label>
+      <input type="email" class="form-control" id="orgEmail" placeholder="Enter organization email"
+        [(ngModel)]="orgEmail" name="orgEmail" required #orgEmailInput="ngModel">
+
+      <div *ngIf="orgEmailInput.invalid && (orgEmailInput.dirty || orgEmailInput.touched)" class="error-message">
+        <div *ngIf="orgEmailInput.errors && orgEmailInput.errors['required']">Organization email address is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="stackType">Stack Type</label>
+      <select class="form-control" [(ngModel)]="stackType" name="stackType" required #stackTypeInput="ngModel">
+        <option disabled>Select Stack</option>
+        <option *ngFor="let item of stack" [value]="item">{{item}}</option>
+      </select>
+
+      <div *ngIf="stackTypeInput.invalid && (stackTypeInput.dirty || stackTypeInput.touched)" class="error-message">
+        <div *ngIf="stackTypeInput.errors && stackTypeInput.errors['required']">Stack Type is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="mobile">Mobile</label>
+      <input type="text" class="form-control" id="mobile" placeholder="Enter mobile number" [(ngModel)]="mobile"
+        name="mobile" required #mobileInput="ngModel">
+
+      <div *ngIf="mobileInput.invalid && (mobileInput.dirty || mobileInput.touched)" class="error-message">
+        <div *ngIf="mobileInput.errors && mobileInput.errors['required']">Mobile number is required.</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="designation">Employee designation</label>
+      <input type="text" class="form-control" id="designation" placeholder="Enter employee designation"
+        [(ngModel)]="designation" name="designation" required #designationInput="ngModel">
+
+      <div *ngIf="designationInput.invalid && (designationInput.dirty || designationInput.touched)" class="error-message">
+        <div *ngIf="designationInput.errors && designationInput.errors['required']">Employee designation is required.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">Create employee</button>
+    <div *ngIf="error" class="error-message">
+      <div *ngIf="error">{{error}}</div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,24 @@
+<app-header></app-header>
+<div style="padding: 10px;text-align: right;">
+    <button routerLink="/create-clients" routerLinkActive="active">
+        Create Client
+    </button>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <!-- <th>ID</th> -->
+            <th> Client Name </th>
+            <th> Status </th>
+            <th> Update </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of clientsData">
+            <td>{{ item.clientName }}</td>
+            <td>{{ item.status }} </td>
+            <td><a routerLink="/create-clients" routerLinkActive="active">Update</a></td>
+        </tr>
+    </tbody>
+</table>
