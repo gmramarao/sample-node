@@ -1,8 +1,8 @@
 const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey("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");
+sgMail.setApiKey("");
 const objmsg = {
-    to: ['ramarao.g92@gmail.com', 'rgaddam@evoketechnologies.com'],
-    from: 'rgaddam@evoketechnologies.com', // Use the email address or domain you verified above
+    to: [],
+    from: '', // Use the email address or domain you verified above
     subject: 'Welcome to Medical solutions project',
     html: `<strong>Below are the project Details: 
                 <div>
