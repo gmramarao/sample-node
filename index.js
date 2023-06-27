@@ -8,11 +8,8 @@ const router = require('./src/router');
 const {tokenVerify} = require("./src/hooks/authentication");
 app.use(bodyParser.json());
 app.use(cors());
-
 app.use('/api/v1', router);
-
 app.use('/api', tokenVerify, router);
-
 
 app.use(express.static(__dirname));
 app.get("/signin", tokenVerify, (req, res) => {
