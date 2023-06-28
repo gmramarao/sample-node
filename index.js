@@ -14,6 +14,7 @@ app.use(express.static(__dirname));
 app.get("/signin", tokenVerify, (req, res) => {
     res.sendFile(__dirname + "/public/pages/signin.html");
 });
+
 app.listen(config.port, (err, res)=>{
     if(err){
         console.log(`Getting error while listining the port`);
