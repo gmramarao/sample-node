@@ -10,6 +10,9 @@ const cors = require("cors");
 //app.use(bodyParser.json());
 //app.use(cors());
 //app.use("/api", routing);
+app.use("/*", (req, res, next)=>{
+	res.json("Hello i am calling33333333333333333333333");
+})
 app.get("/", (req, res)=>{
   res.json("Hello i am calling2222222222222222");
 })
